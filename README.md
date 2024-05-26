@@ -1,4 +1,4 @@
-# todolist-vue
+# newsletter-vue
 
 ## Build Setup
 
