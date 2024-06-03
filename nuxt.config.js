@@ -68,6 +68,7 @@ export default {
   build: {},
 
   env: {
-    APIKey: process.env.BASEURL || '',
+    BASE_URL: process.env.BASE_URL || '',
+    API_KEY: process.env.API_KEY || '',
   },
 }
