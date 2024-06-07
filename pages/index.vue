@@ -10,7 +10,7 @@
       <h1>Newsletter</h1>
     </v-app-bar>
     <v-main class="py-14">
-      <ArticleList></ArticleList>
+      <ArticleList />
     </v-main>
   </div>
 </template>
