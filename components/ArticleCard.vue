@@ -17,7 +17,10 @@
 
     <v-card-subtitle>{{ articleData.headline }}</v-card-subtitle>
     <div class="d-flex flex-row align-center justify-space-between px-4 py-4">
-      <v-card-text class="px-0 py-0 blue-grey--text darken-4">
+      <v-card-text
+        class="px-0 py-0 blue-grey--text darken-4"
+        :title="formattedDateTitle"
+      >
         {{ formattedDate }}
       </v-card-text>
       <a :href="articleData.url" target="_blank">
@@ -56,6 +59,11 @@ export default {
         daysDiff * -1,
         'day'
       )
+    },
+    formattedDateTitle() {
+      const articleDate = new Date(this.articleData.publishedAt)
+
+      return new Intl.DateTimeFormat('pt-BR').format(articleDate)
     },
   },
 }
