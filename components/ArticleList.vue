@@ -69,7 +69,7 @@ export default {
 $screen-sm-min: 640px;
 
 .grid-2col {
-  display: grid;
+  display: grid !important;
   grid-template-columns: auto;
   gap: 1.5rem;
 
