@@ -55,11 +55,7 @@ export default {
 
   methods: {
     async getArticles() {
-      const response = await this.$axios.$get(`/api/articles`)
-      const formattedResponse = JSON.parse(
-        response.split('```')[1].slice(4, response.length)
-      )
-      this.articles = formattedResponse
+      this.articles = await this.$axios.$get(`/api/articles`)
     },
   },
 }
