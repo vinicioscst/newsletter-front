@@ -9,6 +9,9 @@ export const getters = {
   getTotalPages(state) {
     return Math.ceil(state.articles.count / 12)
   },
+  getTopics(state) {
+    return [...new Set(state.articles.articles.map((article) => article.topic))]
+  },
 }
 
 export const mutations = {
