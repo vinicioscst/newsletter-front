@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="subjects.length > 0">
     <h2 class="pb-6">Tópicos</h2>
     <div
       class="grey lighten-4 px-4 py-3 rounded-xl d-flex gap-4 overflow-x-auto"
