@@ -1,17 +1,14 @@
 <template>
-  <div>
-    <v-app-bar
-      extended
-      dark
-      elevation="0"
-      class="d-flex align-center justify-center gap-4 px-6 blue-grey darken-4"
-    >
-      <v-icon large class="pr-4"> mdi-newspaper </v-icon>
-      <h1>Newsletter</h1>
-    </v-app-bar>
-    <v-main class="py-14">
-      <ArticleList />
-    </v-main>
+  <div class="page">
+    <div class="page-container">
+      <SearchArticles />
+      <TopicsList />
+      <v-main class="py-11">
+        <h2 class="pr-2 pb-6">Últimas notícias</h2>
+        <ArticleList />
+        <Pagination />
+      </v-main>
+    </div>
   </div>
 </template>
 
@@ -20,3 +17,15 @@ export default {
   name: 'IndexPage',
 }
 </script>
+
+<style lang="scss">
+.page {
+  padding: 0 16px;
+}
+
+.page-container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+</style>
