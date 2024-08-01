@@ -1,5 +1,6 @@
 export const state = () => ({
   articles: {},
+  isLoading: false,
 })
 
 export const getters = {
@@ -12,22 +13,33 @@ export const getters = {
   getTopics(state) {
     return [...new Set(state.articles.articles.map((article) => article.topic))]
   },
+  getLoadingStatus(state) {
+    return state.isLoading
+  },
 }
 
 export const mutations = {
   setArticles(state, articles) {
     state.articles = articles
   },
+  setLoading(state, loading) {
+    state.loading = loading
+  },
 }
 
 export const actions = {
-  async fetchArticles({ commit }) {
+  async fetchArticles({ commit }, page = 1) {
     try {
-      const response = await this.$axios.$get(`/api/articles?perPage=12`)
+      commit('setLoading', true)
+      const response = await this.$axios.$get(
+        `/api/articles?perPage=12&page=${page}`
+      )
       commit('setArticles', response)
       return response
     } catch (error) {
       console.error('Error fetching articles:', error)
+    } finally {
+      commit('setLoading', false)
     }
   },
 
