@@ -20,12 +20,7 @@
       </div>
     </v-app-bar>
     <v-navigation-drawer v-model="drawer" absolute temporary>
-      <NuxtLink to="/login">
-        <v-btn outlined color="orange darken-3">
-          <v-icon dark left> mdi-login </v-icon>
-          Login
-        </v-btn>
-      </NuxtLink>
+      <DrawerMenu />
     </v-navigation-drawer>
   </div>
 </template>
