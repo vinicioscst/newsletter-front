@@ -71,7 +71,7 @@ export default {
 <style lang="scss">
 .grid-2col {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 302px));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1.5rem;
 }
 
