@@ -1,7 +1,5 @@
 <template>
   <v-card
-    width="auto"
-    min-width="200px"
     tag="li"
     elevation="0"
     class="mb-3 blue-grey lighten-5"
