@@ -15,6 +15,13 @@
 <script>
 export default {
   name: 'IndexPage',
+  async beforeMount() {
+    try {
+      await this.$store.dispatch('fetchArticles', {
+        page: 1,
+      })
+    } catch (error) {}
+  },
 }
 </script>
 

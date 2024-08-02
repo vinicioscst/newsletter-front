@@ -4,6 +4,7 @@
     :length="totalPages"
     @input="handlePageChange"
     color="orange darken-3"
+    class="mt-6"
   />
 </template>
 
@@ -12,14 +13,21 @@ export default {
   data() {
     return {
       currentPage: 1,
-      totalPages: this.$store.getters['getTotalPages'],
     }
+  },
+
+  computed: {
+    totalPages() {
+      return this.$store.getters['getTotalPages']
+    },
   },
 
   methods: {
     async handlePageChange(page) {
-      this.currentPage = page
-      await this.$store.dispatch('fetchArticles', page)
+      try {
+        this.currentPage = page
+        await this.$store.dispatch('fetchArticles', { page })
+      } catch (error) {}
     },
   },
 }
