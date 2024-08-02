@@ -28,11 +28,11 @@ export const mutations = {
 }
 
 export const actions = {
-  async fetchArticles({ commit }, page = 1) {
+  async fetchArticles({ commit }, { page = 1, title = '' }) {
     try {
       commit('setLoading', true)
       const response = await this.$axios.$get(
-        `/api/articles?perPage=12&page=${page}`
+        `/api/articles?perPage=12&page=${page}&title=${title}`
       )
       commit('setArticles', response)
       return response
@@ -44,6 +44,6 @@ export const actions = {
   },
 
   async nuxtServerInit({ dispatch }) {
-    await dispatch('fetchArticles')
+    await dispatch('fetchArticles', {})
   },
 }
