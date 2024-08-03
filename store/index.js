@@ -5,7 +5,7 @@ export const state = () => ({
   page: 1,
   perPage: 12,
   search: '',
-  orderBy: 'desc',
+  orderBy: 'MaisRecente',
 })
 
 export const getters = {
@@ -20,6 +20,12 @@ export const getters = {
   },
   getLoadingStatus(state) {
     return state.isLoading
+  },
+  getOrderBy(state) {
+    return state.orderBy
+  },
+  getPerPage(state) {
+    return state.perPage
   },
 }
 

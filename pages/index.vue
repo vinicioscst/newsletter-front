@@ -4,7 +4,7 @@
       <SearchArticles />
       <TopicsList />
       <v-main class="py-11">
-        <h2 class="pr-2 pb-6">Últimas notícias</h2>
+        <ArticleListHeader />
         <ArticleList />
         <Pagination />
       </v-main>
@@ -17,9 +17,11 @@ export default {
   name: 'IndexPage',
   async beforeMount() {
     try {
-      await this.$store.dispatch('fetchArticles', {
-        page: 1,
-      })
+      this.$store.commit('setPage', 1)
+      this.$store.commit('setPerPage', 12)
+      this.$store.commit('setSearch', '')
+      this.$store.commit('setOrderBy', 'MaisRecente')
+      await this.$store.dispatch('fetchArticles')
     } catch (error) {}
   },
 }

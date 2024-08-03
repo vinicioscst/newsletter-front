@@ -5,7 +5,7 @@
         <SearchArticles />
         <TopicsList />
         <v-main class="py-11">
-          <h2 class="pr-2 pb-6">Últimas notícias</h2>
+          <ArticleListHeader />
           <ArticleList />
           <Pagination />
         </v-main>
