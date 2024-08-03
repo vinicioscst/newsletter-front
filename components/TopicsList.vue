@@ -1,13 +1,13 @@
 <template>
-  <div v-if="subjects && subjects.length > 0">
+  <div v-if="topics && topics.length > 0">
     <h2 class="pb-6">Tópicos</h2>
     <div
       class="grey lighten-4 px-4 py-3 rounded-xl d-flex gap-4 overflow-x-auto"
     >
       <TopicCard
-        v-for="subject in subjects"
-        :key="subject"
-        :subject="subject"
+        v-for="topic in topics"
+        :key="topic.topic"
+        :topic="topic.topic"
         :color="generateColor(colors.length)"
       />
     </div>
@@ -30,7 +30,7 @@ export default {
   },
 
   computed: {
-    subjects() {
+    topics() {
       return this.$store.getters['getTopics']
     },
   },

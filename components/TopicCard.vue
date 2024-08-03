@@ -1,13 +1,16 @@
 <template>
-  <div :class="`rounded-xl white--text px-3 py-1 ${color} text-no-wrap`">
-    <p class="text-lowercase mb-0">{{ `#${subject}` }}</p>
-  </div>
+  <NuxtLink
+    :to="{ name: 'articles', query: { search: subject } }"
+    :class="`rounded-xl white--text px-3 py-1 ${color} text-no-wrap link`"
+  >
+    <p class="text-lowercase mb-0">{{ `#${topic}` }}</p>
+  </NuxtLink>
 </template>
 
 <script>
 export default {
   props: {
-    subject: {
+    topic: {
       type: String,
       default: () => '',
     },
@@ -18,3 +21,9 @@ export default {
   },
 }
 </script>
+
+<style lang="scss">
+.link {
+  text-decoration: none;
+}
+</style>
