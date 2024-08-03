@@ -26,7 +26,8 @@ export default {
     async handlePageChange(page) {
       try {
         this.currentPage = page
-        await this.$store.dispatch('fetchArticles', { page })
+        this.$store.commit('setPage', page)
+        await this.$store.dispatch('fetchArticles')
       } catch (error) {}
     },
   },
