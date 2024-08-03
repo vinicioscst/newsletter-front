@@ -1,6 +1,6 @@
 <template>
   <NuxtLink
-    :to="{ name: 'articles', query: { search: subject } }"
+    :to="{ name: 'articles', query: { search: topic } }"
     :class="`rounded-xl white--text px-3 py-1 ${color} text-no-wrap link`"
   >
     <p class="text-lowercase mb-0">{{ `#${topic}` }}</p>
