@@ -2,7 +2,7 @@
   <v-form @submit.prevent="goToSearchPage" class="d-flex gap-4">
     <v-text-field
       color="orange darken-3"
-      placeholder="Pesquise pelo título"
+      placeholder="Pesquise pelo título ou tópico"
       v-model="inputText"
       filled
       rounded
@@ -30,8 +30,8 @@ export default {
   },
   methods: {
     goToSearchPage(e) {
-      const title = e.target[0].value
-      this.$router.push({ path: '/articles', query: { title: title } })
+      const search = e.target[0].value
+      this.$router.push({ path: '/articles', query: { search } })
     },
   },
 }
