@@ -1,6 +1,7 @@
 <template>
   <v-select
     color="orange darken-3"
+    item-color="orange darken-3"
     :model="model"
     :items="items"
     item-text="text"
