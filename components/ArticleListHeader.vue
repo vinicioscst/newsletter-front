@@ -1,7 +1,7 @@
 <template>
-  <div class="d-flex justify-space-between gap-4 pb-6">
+  <div class="d-flex justify-space-between gap-4 pb-6 list-header">
     <h2>Últimas notícias</h2>
-    <div class="d-flex gap-4">
+    <div class="d-flex select-container">
       <Select
         :items="orderBy"
         :model="orderByModel"
@@ -43,5 +43,22 @@ export default {
 <style>
 .gap-4 {
   gap: 1rem;
+}
+
+.list-header {
+  flex-direction: column;
+
+  @media (min-width: 640px) {
+    flex-direction: row;
+  }
+}
+
+.select-container {
+  flex-direction: column;
+
+  @media (min-width: 425px) {
+    flex-direction: row;
+    gap: 1rem;
+  }
 }
 </style>

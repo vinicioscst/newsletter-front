@@ -1,5 +1,5 @@
 <template>
-  <v-responsive width="100%" class="mx-auto">
+  <div>
     <v-list
       v-if="isLoading"
       tag="ul"
@@ -33,7 +33,7 @@
       <h3 class="text-center pb-10">Nenhuma notícia encontrada</h3>
     </v-list>
     <Modal />
-  </v-responsive>
+  </div>
 </template>
 
 <script>

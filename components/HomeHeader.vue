@@ -80,7 +80,7 @@ export default {
 .hide-mobile {
   display: none;
 
-  @media (min-width: 768px) {
+  @media (min-width: 640px) {
     display: block;
   }
 }
