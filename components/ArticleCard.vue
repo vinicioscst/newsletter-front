@@ -84,7 +84,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style>
 .text-break {
   word-break: break-all;
 }

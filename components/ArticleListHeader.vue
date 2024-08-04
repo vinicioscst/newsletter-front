@@ -40,7 +40,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style>
 .gap-4 {
   gap: 1rem;
 }

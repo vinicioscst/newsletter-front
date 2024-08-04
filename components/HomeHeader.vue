@@ -38,10 +38,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
-$screen-sm-min: 640px;
-$screen-md-min: 768px;
-
+<style>
 .header-container {
   width: 100%;
   max-width: 1280px;
@@ -75,7 +72,7 @@ $screen-md-min: 768px;
 .hide-desktop {
   display: block;
 
-  @media (min-width: $screen-sm-min) {
+  @media (min-width: 640px) {
     display: none;
   }
 }
@@ -83,7 +80,7 @@ $screen-md-min: 768px;
 .hide-mobile {
   display: none;
 
-  @media (min-width: $screen-sm-min) {
+  @media (min-width: 768px) {
     display: block;
   }
 }

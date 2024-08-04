@@ -14,7 +14,7 @@
   </div>
 </template>
 
-<style lang="scss">
+<style>
 .container a {
   text-decoration: none;
 }
