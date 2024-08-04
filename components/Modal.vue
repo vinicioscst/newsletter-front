@@ -94,7 +94,7 @@ export default {
   z-index: 1;
 }
 .title {
-  word-break: break-word;
+  word-break: break-word !important;
   padding-bottom: 0px !important;
 }
 </style>
