@@ -27,7 +27,6 @@ export default {
         { text: '4', value: 4 },
         { text: '8', value: 8 },
         { text: '12', value: 12 },
-        { text: '16', value: 16 },
       ],
       orderByModel: { text: 'Mais recente', value: 'MaisRecente' },
       orderBy: [
