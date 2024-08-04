@@ -32,7 +32,7 @@
       <v-card-actions class="pa-6">
         <a :href="article.url" target="_blank" class="flex-grow-1">
           <v-btn color="orange darken-3" class="white--text" width="100%">
-            Saiba mais
+            Leia a matéria completa
           </v-btn>
         </a>
       </v-card-actions>
