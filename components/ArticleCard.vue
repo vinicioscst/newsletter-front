@@ -1,9 +1,5 @@
 <template>
-  <v-card
-    tag="li"
-    elevation="0"
-    class="mb-3 blue-grey lighten-5"
-  >
+  <v-card tag="li" elevation="0" class="mb-3 blue-grey lighten-5">
     <v-img v-bind="articleImg" class="article-img">
       <v-chip :class="`ml-4 ${color} white--text`">{{
         articleData?.subtopic || 'Subtópico indisponível'
@@ -23,9 +19,14 @@
       >
         {{ formattedDate }}
       </v-card-text>
-      <a :href="articleData?.url || '#'" target="_blank">
-        <v-btn small outlined color="grey darken-1"> Leia mais </v-btn>
-      </a>
+      <v-btn
+        small
+        outlined
+        color="grey darken-1"
+        @click.stop="() => handleArticleOpen(articleData?.id)"
+      >
+        Saiba mais
+      </v-btn>
     </div>
   </v-card>
 </template>
@@ -72,6 +73,12 @@ export default {
       const articleDate = new Date(this.articleData.publishedAt)
 
       return new Intl.DateTimeFormat('pt-BR').format(articleDate)
+    },
+  },
+  methods: {
+    handleArticleOpen(id) {
+      this.$store.commit('setSelectedArticle', id)
+      this.$store.commit('setIsOpen', true)
     },
   },
 }

@@ -6,6 +6,8 @@ export const state = () => ({
   perPage: 12,
   search: '',
   orderBy: 'MaisRecente',
+  isOpen: false,
+  selectedArticle: {},
 })
 
 export const getters = {
@@ -26,6 +28,12 @@ export const getters = {
   },
   getPerPage(state) {
     return state.perPage
+  },
+  getIsOpen(state) {
+    return state.isOpen
+  },
+  getSelectedArticle(state) {
+    return state.selectedArticle
   },
 }
 
@@ -50,6 +58,15 @@ export const mutations = {
   },
   setOrderBy(state, orderBy) {
     state.orderBy = orderBy
+  },
+  setIsOpen(state, isOpen) {
+    state.isOpen = isOpen
+  },
+  setSelectedArticle(state, articleId) {
+    const articleIndex = this.state.articles.articles.findIndex(
+      (article) => article.id === articleId
+    )
+    state.selectedArticle = this.state.articles.articles[articleIndex]
   },
 }
 

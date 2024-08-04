@@ -32,6 +32,7 @@
     >
       <h3 class="text-center pb-10">Nenhuma notícia encontrada</h3>
     </v-list>
+    <Modal />
   </v-responsive>
 </template>
 
