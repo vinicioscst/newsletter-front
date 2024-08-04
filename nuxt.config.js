@@ -1,4 +1,5 @@
 import colors from 'vuetify/es5/util/colors'
+import sass from 'sass'
 
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -77,7 +78,7 @@ export default {
   build: {
     loaders: {
       scss: {
-        implementation: require('sass'),
+        implementation: sass,
       },
     },
   },
