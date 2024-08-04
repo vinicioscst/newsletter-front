@@ -6,12 +6,10 @@
           <h1 class="logo">Newsletter</h1>
         </NuxtLink>
         <div class="hide-mobile">
-          <NuxtLink to="/login">
-            <v-btn outlined color="orange darken-3">
-              <v-icon dark left> mdi-login </v-icon>
-              Login
-            </v-btn>
-          </NuxtLink>
+          <v-btn nuxt to="/login" outlined color="orange darken-3">
+            <v-icon dark left> mdi-login </v-icon>
+            Login
+          </v-btn>
         </div>
         <v-app-bar-nav-icon
           @click.stop="drawer = !drawer"
