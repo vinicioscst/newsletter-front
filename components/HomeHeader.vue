@@ -1,22 +1,36 @@
 <template>
-  <div class="py-11">
-    <v-app-bar elevation="0" class="transparent">
-      <div class="header-container">
-        <NuxtLink to="/">
-          <h1 class="logo">Newsletter</h1>
-        </NuxtLink>
-        <div class="hide-mobile">
-          <v-btn nuxt to="/login" outlined color="orange darken-3">
-            <v-icon dark left> mdi-login </v-icon>
-            Login
-          </v-btn>
+  <div>
+    <div class="py-11 mb-11 orange darken-3 rounded-b-xl">
+      <v-app-bar elevation="0" class="transparent">
+        <div
+          :class="`header-container ${
+            !isOnLogin
+              ? 'justify-space-between'
+              : 'justify-sm-start justify-center'
+          }`"
+        >
+          <NuxtLink to="/">
+            <h1 class="logo">Newsletter</h1>
+          </NuxtLink>
+          <div v-if="!isOnLogin" class="hide-mobile">
+            <v-btn
+              nuxt
+              to="/login"
+              outlined
+              class="white orange--text text--darken-3"
+            >
+              <v-icon dark left> mdi-login </v-icon>
+              Login
+            </v-btn>
+          </div>
+          <v-app-bar-nav-icon
+            v-if="!isOnLogin"
+            @click.stop="drawer = !drawer"
+            class="hide-desktop white orange--text text--darken-3"
+          />
         </div>
-        <v-app-bar-nav-icon
-          @click.stop="drawer = !drawer"
-          class="hide-desktop"
-        />
-      </div>
-    </v-app-bar>
+      </v-app-bar>
+    </div>
     <v-navigation-drawer v-model="drawer" absolute temporary>
       <DrawerMenu />
     </v-navigation-drawer>
@@ -29,6 +43,12 @@ export default {
     drawer: false,
     group: null,
   }),
+
+  computed: {
+    isOnLogin() {
+      return this.$route.path === '/login'
+    },
+  },
 
   watch: {
     group() {
@@ -44,7 +64,6 @@ export default {
   max-width: 1280px;
   margin: 0 auto;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   gap: 1rem;
   position: relative;
@@ -55,7 +74,7 @@ export default {
 }
 
 .logo {
-  color: #ef6c00;
+  color: white;
   text-transform: lowercase;
   user-select: none;
 }
