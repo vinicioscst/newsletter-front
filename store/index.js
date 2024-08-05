@@ -102,7 +102,7 @@ export const actions = {
   },
 
   async nuxtServerInit({ dispatch }) {
-    await dispatch('fetchArticles', {})
-    await dispatch('fetchTopics', {})
+    await dispatch('fetchArticles')
+    await dispatch('fetchTopics')
   },
 }
