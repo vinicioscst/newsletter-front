@@ -84,4 +84,8 @@ export default {
   server: {
     port: 8000,
   },
+
+  router: {
+    middleware: ['check-auth', 'auth'],
+  },
 }

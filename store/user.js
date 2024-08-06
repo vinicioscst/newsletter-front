@@ -1,19 +1,21 @@
+import { jwtDecode } from 'jwt-decode'
+
 export const state = () => ({
-  loggedIn: false,
   user: null,
-  token: '',
+  id: null,
+  token: null,
   isLoading: false,
 })
 
 export const getters = {
-  getLoggedIn(state) {
-    return state.loggedIn
-  },
   getUser(state) {
     return state.user
   },
-  getToken(state) {
-    return state.token
+  getId(state) {
+    return state.id
+  },
+  isAuthenticated(state) {
+    return state.token !== null
   },
   getIsLoading(state) {
     return state.isLoading
@@ -21,11 +23,11 @@ export const getters = {
 }
 
 export const mutations = {
-  setLoggedIn(state, value) {
-    state.loggedIn = value
-  },
   setUser(state, value) {
     state.user = value
+  },
+  setId(state, value) {
+    state.id = value
   },
   setToken(state, value) {
     state.token = value
@@ -42,7 +44,7 @@ export const actions = {
       const response = await this.$axios.post('api/login', body)
 
       commit('setToken', response.data.token)
-      commit('setLoggedIn', true)
+      commit('setId', response.data.id)
 
       const options = {
         path: '/',
@@ -63,5 +65,31 @@ export const actions = {
     } finally {
       commit('setIsLoading', false)
     }
+  },
+
+  verifyAuth({ commit }, cookies) {
+    const token = cookies.get('NEWSLETTER-TKN')
+    const userId = cookies.get('NEWSLETTER-USERID')
+
+    if (token) {
+      const decodedToken = jwtDecode(token)
+      const currentTime = Math.floor(Date.now() / 1000)
+
+      if (decodedToken.exp < currentTime) {
+        cookies.remove('NEWSLETTER-TKN')
+        cookies.remove('NEWSLETTER-USERID')
+        commit('setToken', null)
+        commit('setId', null)
+        return
+      }
+
+      commit('setToken', token)
+      commit('setId', userId)
+    } else if (!token) {
+      commit('setToken', null)
+      commit('setId', null)
+    }
+
+    return
   },
 }
