@@ -4,7 +4,7 @@
       <v-app-bar elevation="0" class="transparent">
         <div
           :class="`header-container ${
-            !isOnLogin
+            isOnBlog
               ? 'justify-space-between'
               : 'justify-sm-start justify-center'
           }`"
@@ -12,47 +12,41 @@
           <NuxtLink to="/">
             <h1 class="logo">Newsletter</h1>
           </NuxtLink>
-          <div v-if="!isOnLogin" class="hide-mobile">
-            <v-btn
-              nuxt
-              to="/login"
-              outlined
-              class="white orange--text text--darken-3"
-            >
-              <v-icon dark left> mdi-login </v-icon>
-              Login
-            </v-btn>
-          </div>
-          <v-app-bar-nav-icon
-            v-if="!isOnLogin"
-            @click.stop="drawer = !drawer"
-            class="hide-desktop white orange--text text--darken-3"
+          <LoginHeader
+            v-if="isOnBlog"
+            :isDrawerOpen="drawer"
+            @update:isDrawerOpen="handleMenuOpen"
           />
         </div>
       </v-app-bar>
     </div>
-    <v-navigation-drawer v-model="drawer" absolute temporary>
-      <DrawerMenu />
-    </v-navigation-drawer>
+    <DrawerMenu v-if="isOnBlog" :value="drawer" @input="handleOpenClose" />
   </div>
 </template>
 
 <script>
 export default {
-  data: () => ({
-    drawer: false,
-    group: null,
-  }),
+  data() {
+    return {
+      drawer: false,
+    }
+  },
 
   computed: {
-    isOnLogin() {
-      return this.$route.path === '/login'
+    isOnBlog() {
+      return this.$route.path === '/' || this.$route.path === '/articles'
+    },
+    isOnAdmin() {
+      return this.$route.path.startsWith('/admin')
     },
   },
 
-  watch: {
-    group() {
-      this.drawer = false
+  methods: {
+    handleMenuOpen(data) {
+      this.drawer = data
+    },
+    handleOpenClose(data) {
+      this.drawer = data
     },
   },
 }
@@ -77,30 +71,5 @@ export default {
   color: white;
   text-transform: lowercase;
   user-select: none;
-}
-
-.search-menu-container {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.search-menu-container button {
-  margin-top: 2px;
-}
-
-.hide-desktop {
-  display: block;
-
-  @media (min-width: 640px) {
-    display: none;
-  }
-}
-
-.hide-mobile {
-  display: none;
-
-  @media (min-width: 640px) {
-    display: block;
-  }
 }
 </style>
