@@ -69,19 +69,14 @@ export default {
 
       try {
         const body = { email: this.email, password: this.password }
-        const response = await this.$store.dispatch('user/loginUser', {
+        await this.$store.dispatch('user/loginUser', {
           body,
           cookies: this.$cookies,
+          toast: this.$toast,
+          router: this.$router,
         })
-
-        if (response.status === 200) {
-          this.$router.push('/admin')
-          return
-        }
-
-        alert(response.data.error)
       } catch (error) {
-        alert(error)
+        console.log(error)
       }
     },
   },

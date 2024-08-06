@@ -1,7 +1,14 @@
-export default function ({ $axios }) {
+export default function ({ $axios, $toast }) {
   $axios.onError((error) => {
-    if (error.response) {
-      return Promise.reject(error.response)
+    const message =
+      error.response?.data?.message ||
+      error.response?.data?.error ||
+      'Ocorreu um erro inesperado. Por favor, tente novamente.'
+
+    if (process.client) {
+      $toast.error(message)
+    } else {
+      $toast.error('Erro de rede ou servidor não está respondendo.')
     }
 
     return Promise.reject(error)

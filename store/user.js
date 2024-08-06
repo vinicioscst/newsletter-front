@@ -38,7 +38,7 @@ export const mutations = {
 }
 
 export const actions = {
-  async loginUser({ commit }, { body, cookies }) {
+  async loginUser({ commit }, { body, cookies, toast, router }) {
     try {
       commit('setIsLoading', true)
       const response = await this.$axios.post('api/login', body)
@@ -59,9 +59,11 @@ export const actions = {
 
       cookies.setAll(allCookies)
 
-      return response
+      toast.success('Login realizado com sucesso!')
+
+      router.push('/admin')
     } catch (error) {
-      return error
+      console.error(error)
     } finally {
       commit('setIsLoading', false)
     }
