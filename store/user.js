@@ -69,6 +69,34 @@ export const actions = {
     }
   },
 
+  async loadUser({ commit, state }) {
+    try {
+      const { data } = await this.$axios.get(`api/user/${state.id}`, {
+        headers: {
+          Authorization: `Bearer ${state.token}`,
+        },
+      })
+
+      commit('setUser', data)
+    } catch (error) {
+      console.error(error)
+    }
+  },
+
+  logoutUser({ commit }, { cookies, toast, router }) {
+    cookies.remove('NEWSLETTER-TKN')
+    cookies.remove('NEWSLETTER-USERID')
+    commit('setToken', null)
+    commit('setId', null)
+    commit('setUser', null)
+
+    toast.success('Logout realizado com sucesso!')
+
+    setTimeout(() => {
+      router.push('/login')
+    }, 1500)
+  },
+
   verifyAuth({ commit }, cookies) {
     const token = cookies.get('NEWSLETTER-TKN')
     const userId = cookies.get('NEWSLETTER-USERID')
