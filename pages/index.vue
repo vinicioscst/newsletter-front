@@ -1,14 +1,12 @@
 <template>
-  <div class="page">
-    <div class="page-container">
-      <SearchArticles />
-      <TopicsList />
-      <v-main class="py-11">
-        <ArticleListHeader />
-        <ArticleList />
-        <Pagination />
-      </v-main>
-    </div>
+  <div>
+    <SearchArticles />
+    <TopicsList />
+    <v-main class="py-11">
+      <ArticleListHeader />
+      <ArticleList />
+      <Pagination />
+    </v-main>
   </div>
 </template>
 
@@ -26,15 +24,3 @@ export default {
   },
 }
 </script>
-
-<style>
-.page {
-  padding: 0 16px;
-}
-
-.page-container {
-  width: 100%;
-  max-width: 1280px;
-  margin: 0 auto;
-}
-</style>

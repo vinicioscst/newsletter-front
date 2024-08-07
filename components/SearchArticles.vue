@@ -36,3 +36,9 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.gap-4 {
+  gap: 1rem;
+}
+</style>

@@ -1,7 +1,11 @@
 <template>
   <v-app>
     <HomeHeader />
-    <Nuxt />
+    <div class="page">
+      <div class="page-container">
+        <Nuxt />
+      </div>
+    </div>
   </v-app>
 </template>
 
@@ -11,8 +15,18 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 * {
   font-family: 'Inter', sans-serif;
+}
+
+.page {
+  padding: 0 16px;
+  width: 100%;
+}
+
+.page-container {
+  max-width: 1280px;
+  margin: 0 auto;
 }
 </style>
