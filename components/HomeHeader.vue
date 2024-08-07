@@ -2,57 +2,28 @@
   <div>
     <div class="py-11 mb-11 orange darken-3 rounded-b-xl">
       <v-app-bar elevation="0" class="transparent">
-        <div
-          :class="`header-container ${
-            isOnBlog
-              ? 'justify-space-between'
-              : 'justify-sm-start justify-center'
-          }`"
-        >
+        <div class="header-container justify-space-between">
           <NuxtLink to="/">
             <h1 class="logo">Newsletter</h1>
           </NuxtLink>
-          <LoginHeader
-            v-if="isOnBlog"
-            :isDrawerOpen="drawer"
-            @update:isDrawerOpen="handleMenuOpen"
-          />
+          <HomeHeaderLoginButton v-if="isOnBlog" />
         </div>
       </v-app-bar>
     </div>
-    <DrawerMenu v-if="isOnBlog" :value="drawer" @input="handleOpenClose" />
   </div>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      drawer: false,
-    }
-  },
-
   computed: {
     isOnBlog() {
       return this.$route.path === '/' || this.$route.path === '/articles'
-    },
-    isOnAdmin() {
-      return this.$route.path.startsWith('/admin')
-    },
-  },
-
-  methods: {
-    handleMenuOpen(data) {
-      this.drawer = data
-    },
-    handleOpenClose(data) {
-      this.drawer = data
     },
   },
 }
 </script>
 
-<style>
+<style scoped>
 .header-container {
   width: 100%;
   max-width: 1280px;
