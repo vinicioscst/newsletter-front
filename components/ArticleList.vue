@@ -32,7 +32,7 @@
     >
       <h3 class="text-center pb-10">Nenhuma notícia encontrada</h3>
     </v-list>
-    <Modal />
+    <PreviewModal :isOpen="isOpen" @isModalOpen="handleModalOpen" />
   </div>
 </template>
 
@@ -55,15 +55,21 @@ export default {
       return this.$store.getters['getArticles']
     },
     hasArticles() {
-      return this.articles.length > 0
+      return this.articles && this.articles.length > 0
     },
     isLoading() {
       return this.$store.getters['getLoadingStatus']
+    },
+    isOpen() {
+      return this.$store.getters['getIsOpen']
     },
   },
   methods: {
     generateColor(arrayLength) {
       return this.colors[Math.trunc(Math.random() * arrayLength)]
+    },
+    handleModalOpen(data) {
+      return this.$store.commit('setIsOpen', data)
     },
   },
 }
