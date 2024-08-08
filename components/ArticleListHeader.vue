@@ -2,13 +2,13 @@
   <div class="d-flex justify-space-between gap-4 pb-6 list-header">
     <h2>Últimas notícias</h2>
     <div class="d-flex select-container">
-      <Select
+      <FilterSelect
         :items="orderBy"
         :model="orderByModel"
         label="Ordernar por"
         icon="mdi-order-alphabetical-ascending"
       />
-      <Select
+      <FilterSelect
         :items="perPage"
         :model="perPageModel"
         label="Notícias por página"

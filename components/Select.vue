@@ -1,6 +1,6 @@
 <template>
   <v-select
-    color="orange darken-3"
+    color="white"
     item-color="orange darken-3"
     :model="model"
     :items="items"
@@ -9,7 +9,7 @@
     :label="label"
     :prepend-icon="icon"
     @change="handleChange"
-    :value="selectValue"
+    dark
     outlined
     dense
   />
@@ -35,25 +35,10 @@ export default {
       default: () => '',
     },
   },
-  computed: {
-    selectValue() {
-      if (this.label === 'Ordernar por')
-        return this.$store.getters['getOrderBy']
-      if (this.label === 'Notícias por página')
-        return this.$store.getters['getPerPage']
-    },
-  },
-  watch: {
-    async selectValue(_) {
-      await this.$store.dispatch('fetchArticles')
-    },
-  },
+
   methods: {
-    handleChange(value) {
-      if (this.label === 'Ordernar por')
-        return this.$store.commit('setOrderBy', value)
-      if (this.label === 'Notícias por página')
-        return this.$store.commit('setPerPage', value)
+    handleChange(data) {
+      this.$emit('selectChangeValue', data)
     },
   },
 }
