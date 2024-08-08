@@ -14,6 +14,9 @@ export const getters = {
   getId(state) {
     return state.id
   },
+  getToken(state) {
+    return state.token
+  },
   isAuthenticated(state) {
     return state.token !== null
   },
