@@ -2,7 +2,7 @@
   <v-app>
     <DashboardHeader />
     <div class="page">
-      <div class="page-container">
+      <div class="page-container mx-auto my-11">
         <Nuxt />
       </div>
     </div>
@@ -32,6 +32,5 @@ export default {
 
 .page-container {
   max-width: 1280px;
-  margin: 0 auto;
 }
 </style>
