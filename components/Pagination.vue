@@ -1,7 +1,7 @@
 <template>
   <v-pagination
     v-model="currentPage"
-    :length="totalPages"
+    :length="totalPages || 0"
     @input="handlePageChange"
     color="orange darken-3"
     class="mt-6"
@@ -27,7 +27,7 @@ export default {
       try {
         this.currentPage = page
         this.$store.commit('setPage', page)
-        await this.$store.dispatch('fetchArticles')
+        await this.$store.dispatch('loadArticles')
       } catch (error) {}
     },
   },
