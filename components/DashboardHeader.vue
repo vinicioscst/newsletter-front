@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="py-11 mb-11 grey darken-4 rounded-b-xl">
+    <div class="py-11 grey darken-4 rounded-b-xl">
       <v-app-bar elevation="0" class="transparent">
         <div class="header-container justify-space-between">
           <NuxtLink to="/admin">
