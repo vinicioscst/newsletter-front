@@ -14,19 +14,3 @@ export default {
   name: 'LoginPage',
 }
 </script>
-
-<style scoped>
-.login-container {
-  display: flex;
-  flex-direction: column;
-  max-width: 600px;
-  margin: 0 auto;
-
-  background-color: white;
-
-  border-radius: 1rem;
-  box-shadow: 0px 10px 20px 0px rgb(0 0 0 / 30%);
-
-  padding: 3rem 2rem;
-}
-</style>
