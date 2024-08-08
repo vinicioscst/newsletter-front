@@ -25,7 +25,7 @@ export default {
       this.$store.commit('setPage', 1)
       this.$store.commit('setSearch', this.$route.query.search)
 
-      await this.$store.dispatch('fetchArticles')
+      await this.$store.dispatch('loadArticles')
     } catch (error) {}
   },
 }

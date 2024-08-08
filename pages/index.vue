@@ -19,7 +19,7 @@ export default {
       this.$store.commit('setPerPage', 12)
       this.$store.commit('setSearch', '')
       this.$store.commit('setOrderBy', 'MaisRecente')
-      await this.$store.dispatch('fetchArticles')
+      await this.$store.dispatch('loadArticles')
     } catch (error) {}
   },
 }
