@@ -117,9 +117,10 @@ export default {
         name: 'title',
         value: this.article?.title,
         rules: [
-          (v) => !!v || 'Título é obrigatório',
           (v) =>
-            v.length <= 255 || 'Título deve conter, no máximo, 255 caracteres',
+            !v ||
+            v.length <= 255 ||
+            'Título deve conter, no máximo, 255 caracteres',
         ],
         label: 'Título',
       }
@@ -129,9 +130,10 @@ export default {
         name: 'topic',
         value: this.article?.topic,
         rules: [
-          (v) => !!v || 'Tópico é obrigatório',
           (v) =>
-            v.length <= 50 || 'Tópico deve conter, no máximo, 50 caracteres',
+            !v ||
+            v.length <= 50 ||
+            'Tópico deve conter, no máximo, 50 caracteres',
         ],
         label: 'Tópico',
       }
@@ -141,9 +143,10 @@ export default {
         name: 'subtopic',
         value: this.article?.subtopic,
         rules: [
-          (v) => !!v || 'Subtópico é obrigatório',
           (v) =>
-            v.length <= 50 || 'Subtópico deve conter, no máximo, 50 caracteres',
+            !v ||
+            v.length <= 50 ||
+            'Subtópico deve conter, no máximo, 50 caracteres',
         ],
         label: 'Subtópico',
       }
@@ -160,7 +163,7 @@ export default {
       return {
         name: 'content',
         value: this.article?.content,
-        rules: [(v) => !!v || 'Conteúdo é obrigatório'],
+        rules: [],
         label: 'Conteúdo',
       }
     },
@@ -169,9 +172,10 @@ export default {
         name: 'source',
         value: this.article?.source,
         rules: [
-          (v) => !!v || 'Fonte é obrigatória',
           (v) =>
-            v.length <= 50 || 'Fonte deve conter, no máximo, 50 caracteres',
+            !v ||
+            v.length <= 50 ||
+            'Fonte deve conter, no máximo, 50 caracteres',
         ],
         label: 'Fonte',
       }
@@ -180,7 +184,7 @@ export default {
       return {
         name: 'url',
         value: this.article?.url,
-        rules: [(v) => !!v || 'Link é obrigatório'],
+        rules: [],
         label: 'Link',
       }
     },
@@ -227,6 +231,17 @@ export default {
     isFormValid() {
       return this.$refs.form.validate()
     },
+    removeEmptyFields(obj) {
+      const filteredObj = {}
+
+      for (const key in obj) {
+        if (obj.hasOwnProperty(key) && obj[key] !== '') {
+          filteredObj[key] = obj[key]
+        }
+      }
+
+      return filteredObj
+    },
     async handleForm(e) {
       const isValid = this.isFormValid()
       if (!isValid) return
@@ -246,7 +261,7 @@ export default {
 
         await this.$store.dispatch('editArticle', {
           id: this.article?.id,
-          body,
+          body: this.removeEmptyFields(body),
           toast: this.$toast,
           token: this.$store.getters['user/getToken'],
         })
