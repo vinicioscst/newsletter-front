@@ -1,6 +1,9 @@
 <template>
   <div>
-    <h1>Settings</h1>
+    <h1 class="mb-8 font-weight-regular text-center text-sm-left">
+      Configurações
+    </h1>
+    <EditUserForm />
   </div>
 </template>
 
@@ -8,18 +11,5 @@
 export default {
   name: 'AdminSettingsPage',
   layout: 'dashboard',
-  computed: {
-    user() {
-      return this.$store.getters['user/getUser']
-    },
-  },
-
-  async beforeMount() {
-    if (this.user === null) {
-      try {
-        await this.$store.dispatch('user/loadUser')
-      } catch (error) {}
-    }
-  },
 }
 </script>

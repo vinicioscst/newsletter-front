@@ -86,17 +86,32 @@ export const actions = {
     }
   },
 
-  logoutUser({ commit }, { cookies, toast, router }) {
-    cookies.remove('NEWSLETTER-TKN')
-    cookies.remove('NEWSLETTER-USERID')
-    commit('setToken', null)
-    commit('setId', null)
-    commit('setUser', null)
+  async editUser({ commit, state }, { body, toast }) {
+    try {
+      const { data } = await this.$axios.patch(`api/user/${state.id}`, body, {
+        headers: {
+          Authorization: `Bearer ${state.token}`,
+        },
+      })
 
+      toast.success('Usuário alterado com sucesso!')
+
+      commit('setUser', data)
+    } catch (error) {
+      console.error(error)
+    }
+  },
+
+  logoutUser({ commit }, { cookies, toast, router }) {
     toast.success('Logout realizado com sucesso!')
 
     setTimeout(() => {
       router.push('/login')
+      cookies.remove('NEWSLETTER-TKN')
+      cookies.remove('NEWSLETTER-USERID')
+      commit('setToken', null)
+      commit('setId', null)
+      commit('setUser', null)
     }, 1500)
   },
 
