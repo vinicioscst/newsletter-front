@@ -13,6 +13,7 @@
         name="email"
         label="Email"
         outlined
+        data-test="login-form-email"
       />
       <v-text-field
         v-model="password"
@@ -24,6 +25,7 @@
         label="Senha"
         @click:append="show = !show"
         outlined
+        data-test="login-form-password"
       />
       <v-btn
         color="orange darken-3"
@@ -32,6 +34,7 @@
         type="submit"
         :loading="loading"
         :disabled="!fieldIsValid || loading"
+        data-test="login-form-button"
       >
         Acessar
       </v-btn>
