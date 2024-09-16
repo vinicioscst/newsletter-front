@@ -1,6 +1,6 @@
 <template>
   <v-dialog v-model="isOpenValue" max-width="500px">
-    <v-card class="modal-card">
+    <v-card class="modal-card" data-test="article-preview-modal">
       <v-btn
         icon
         color="orange darken-3"
