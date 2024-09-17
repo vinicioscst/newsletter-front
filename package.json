@@ -11,7 +11,8 @@
     "lint:prettier": "prettier --check .",
     "lint": "npm run lint:js && npm run lint:prettier",
     "lintfix": "prettier --write --list-different . && npm run lint:js -- --fix",
-    "cy:open": "cypress open"
+    "cy:open": "cypress open",
+    "cy:env": "echo {} > ./cypress.env.json"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.13.6",
