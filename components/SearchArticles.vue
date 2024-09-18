@@ -6,6 +6,7 @@
       v-model="inputText"
       filled
       rounded
+      data-test="search-article-input"
     />
     <v-btn
       type="submit"
@@ -15,6 +16,7 @@
       class="white--text elevation-0"
       filled
       rounded
+      data-test="search-article-button"
     >
       <v-icon>mdi-magnify</v-icon>
     </v-btn>

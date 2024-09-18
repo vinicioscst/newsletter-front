@@ -1,13 +1,16 @@
 <template>
   <div>
-    <h1 class="mb-8 font-weight-regular text-center text-sm-left">
+    <h1
+      class="mb-8 font-weight-regular text-center text-sm-left"
+      data-test="dashboard-username"
+    >
       Olá, <span class="font-weight-black">{{ user?.name }}</span>
     </h1>
 
     <div class="cards-container mb-8">
       <CreateArticlesCard />
-      <GridCard :info="totalArticlesInfo" />
-      <GridCard :info="totalTopicsInfo" />
+      <GridCard :info="totalArticlesInfo" dataTestValue="total-articles" />
+      <GridCard :info="totalTopicsInfo" dataTestValue="total-topics" />
     </div>
 
     <ArticlesTable />

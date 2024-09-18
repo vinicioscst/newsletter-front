@@ -15,6 +15,7 @@
         maxlength="50"
         counter
         outlined
+        data-test="edit-name-input"
       />
 
       <v-text-field
@@ -24,6 +25,7 @@
         :name="emailInfo.name"
         :label="emailInfo.label"
         maxlength="60"
+        data-test="edit-email-input"
         counter
         outlined
       />
@@ -47,6 +49,7 @@
         type="submit"
         :loading="loading"
         :disabled="!fieldIsValid || loading"
+        data-test="edit-user-button"
       >
         Editar
       </v-btn>
