@@ -38,17 +38,24 @@ describe('login page', () => {
 
   context('login', () => {
     it('gives invalid credentials message when inserting invalid data', () => {
-      cy.intercept('POST', 'http://localhost:3000/api/login').as('loginRequest')
+      cy.intercept('POST', `${Cypress.env('BASE_URL')}/api/login`).as(
+        'loginRequest'
+      )
 
       cy.dashboardLogin('meuemail@ht.com', 'minhasenha')
 
       cy.wait('@loginRequest').then((interception) => {
         expect(interception.response.statusCode).to.equal(401)
+        cy.get('.Vue-Toastification__toast--error')
+          .should('exist')
+          .and('be.visible')
       })
     })
 
     it('goes to dashboard when inserting correct data', () => {
-      cy.intercept('POST', 'http://localhost:3000/api/login').as('loginRequest')
+      cy.intercept('POST', `${Cypress.env('BASE_URL')}/api/login`).as(
+        'loginRequest'
+      )
 
       const email = Cypress.env('EMAIL')
       const password = Cypress.env('PASSWORD')
@@ -57,11 +64,16 @@ describe('login page', () => {
 
       cy.wait('@loginRequest').then((interception) => {
         expect(interception.response.statusCode).to.equal(200)
+        cy.get('.Vue-Toastification__toast--success')
+          .should('exist')
+          .and('be.visible')
       })
     })
 
     it('store cookies when log in', () => {
-      cy.intercept('POST', 'http://localhost:3000/api/login').as('loginRequest')
+      cy.intercept('POST', `${Cypress.env('BASE_URL')}/api/login`).as(
+        'loginRequest'
+      )
 
       const email = Cypress.env('EMAIL')
       const password = Cypress.env('PASSWORD')
