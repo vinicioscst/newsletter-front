@@ -55,22 +55,18 @@ export default {
   },
   computed: {
     formattedDate() {
-      if (!this.articleData.publishedAt) return ''
-
-      const articleDate = new Date(this.articleData.publishedAt)
+      const articleDate = new Date(this.articleData.createdAt)
       const today = new Date()
       const millisecondsDiff = today.getTime() - articleDate.getTime()
       const daysDiff = Math.round(millisecondsDiff / (24 * 60 * 60 * 1000))
+      const dateText = new Intl.RelativeTimeFormat('pt-br', {
+        style: 'short',
+      }).format(daysDiff * -1, 'day')
 
-      return new Intl.RelativeTimeFormat('pt-br', { style: 'short' }).format(
-        daysDiff * -1,
-        'day'
-      )
+      return `Gerado ${dateText}`
     },
     formattedDateTitle() {
-      if (!this.articleData.publishedAt) return ''
-
-      const articleDate = new Date(this.articleData.publishedAt)
+      const articleDate = new Date(this.articleData.createdAt)
 
       return new Intl.DateTimeFormat('pt-BR').format(articleDate)
     },
