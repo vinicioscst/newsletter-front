@@ -6,9 +6,13 @@ export default function ({ $axios, $toast }) {
       'Ocorreu um erro inesperado. Por favor, tente novamente.'
 
     if (process.client) {
-      $toast.error(message)
+      $toast.error(message, {
+        timeout: false,
+      })
     } else {
-      $toast.error('Erro de rede ou servidor não está respondendo.')
+      $toast.error('Erro de rede ou servidor não está respondendo.', {
+        timeout: false,
+      })
     }
 
     return Promise.reject(error)
