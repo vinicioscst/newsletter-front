@@ -1,9 +1,6 @@
 name: Trigger Cypress Tests
 
 on:
-  push:
-    branches:
-      - dev
   pull_request:
     branches:
       - main
@@ -12,11 +9,16 @@ jobs:
   trigger-tests:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write
+      actions: write
+
     steps:
       - name: Trigger Cypress Tests in Another Repo
         run: |
-          curl -X POST \
+          RESPONSE=$(curl -s -o /dev/stderr -w "%{http_code}" -X POST \
           -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
           -H "Accept: application/vnd.github.v3+json" \
           https://api.github.com/repos/vinicioscst/newsletter-tests/actions/workflows/cypress-tests.yml/dispatches \
-          -d '{"ref":"main"}'
+          -d '{"ref":"main"}')
+          echo "Response code: $RESPONSE"
