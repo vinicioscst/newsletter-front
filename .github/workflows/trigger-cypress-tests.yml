@@ -1,0 +1,22 @@
+name: Trigger Cypress Tests
+
+on:
+  push:
+    branches:
+      - dev
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  trigger-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger Cypress Tests in Another Repo
+        run: |
+          curl -X POST \
+          -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+          -H "Accept: application/vnd.github.v3+json" \
+          https://api.github.com/repos/vinicioscst/newsletter-tests/actions/workflows/cypress-tests.yml/dispatches \
+          -d '{"ref":"main"}'
