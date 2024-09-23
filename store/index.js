@@ -96,7 +96,7 @@ export const actions = {
         },
       })
 
-      toast.success('Notícias geradas com sucesso!')
+      toast.success('Notícias geradas com sucesso!', { timeout: false })
 
       commit('setPage', 1)
       commit('setPerPage', 4)
@@ -138,7 +138,7 @@ export const actions = {
         },
       })
 
-      toast.success('Notícia alterada com sucesso!')
+      toast.success('Notícia alterada com sucesso!', { timeout: false })
 
       await dispatch('loadArticles')
       await dispatch('loadTopics')
@@ -158,7 +158,7 @@ export const actions = {
         },
       })
 
-      toast.success('Notícia deletada com sucesso!')
+      toast.success('Notícia deletada com sucesso!', { timeout: false })
 
       await dispatch('loadArticles')
       await dispatch('loadTopics')

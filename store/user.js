@@ -62,7 +62,7 @@ export const actions = {
 
       cookies.setAll(allCookies)
 
-      toast.success('Login realizado com sucesso!')
+      toast.success('Login realizado com sucesso!', { timeout: false })
 
       router.push('/admin')
     } catch (error) {
@@ -94,7 +94,7 @@ export const actions = {
         },
       })
 
-      toast.success('Usuário alterado com sucesso!')
+      toast.success('Usuário alterado com sucesso!', { timeout: false })
 
       commit('setUser', data)
     } catch (error) {
@@ -103,7 +103,7 @@ export const actions = {
   },
 
   logoutUser({ commit }, { cookies, toast, router }) {
-    toast.success('Logout realizado com sucesso!')
+    toast.success('Logout realizado com sucesso!', { timeout: false })
 
     setTimeout(() => {
       router.push('/login')
