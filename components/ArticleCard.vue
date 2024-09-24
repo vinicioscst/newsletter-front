@@ -1,5 +1,10 @@
 <template>
-  <v-card tag="li" elevation="0" class="mb-3 blue-grey lighten-5">
+  <v-card
+    tag="li"
+    elevation="0"
+    class="mb-3 blue-grey lighten-5"
+    data-test="articles-card"
+  >
     <v-img v-bind="articleImg" class="article-img">
       <v-chip :class="`ml-4 ${color} white--text`">{{
         articleData?.subtopic || 'Subtópico indisponível'
@@ -16,6 +21,7 @@
       <v-card-text
         class="px-0 py-0 grey--text text--darken-1"
         :title="formattedDateTitle"
+        data-test="article-date"
       >
         {{ formattedDate }}
       </v-card-text>
@@ -24,6 +30,7 @@
         outlined
         color="grey darken-1"
         @click.stop="() => handleArticleOpen(articleData?.id)"
+        data-test="card-button"
       >
         Saiba mais
       </v-btn>

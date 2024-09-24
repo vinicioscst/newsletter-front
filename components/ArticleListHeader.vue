@@ -7,12 +7,14 @@
         :model="orderByModel"
         label="Ordernar por"
         icon="mdi-order-alphabetical-ascending"
+        dataTest="orderBy"
       />
       <FilterSelect
         :items="perPage"
         :model="perPageModel"
         label="Notícias por página"
         icon="mdi-numeric"
+        dataTest="perPage"
       />
     </div>
   </div>

@@ -16,6 +16,7 @@
       tag="ul"
       width="100%"
       class="transparent py-0 px-0 mx-auto grid-2col"
+      data-test="articles-list"
     >
       <ArticleCard
         v-for="article in articles"
@@ -30,7 +31,9 @@
       width="100%"
       class="transparent py-0 px-0 mx-auto grid-2col"
     >
-      <h3 class="text-center pb-10">Nenhuma notícia encontrada</h3>
+      <h3 class="text-center pb-10" data-test="no-articles">
+        Nenhuma notícia encontrada
+      </h3>
     </v-list>
     <PreviewModal :isOpen="isOpen" @isModalOpen="handleModalOpen" />
   </div>
