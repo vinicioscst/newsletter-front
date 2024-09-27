@@ -15,6 +15,7 @@
         maxlength="50"
         counter
         outlined
+        data-test="edit-name-input"
       />
 
       <v-text-field
@@ -26,6 +27,7 @@
         maxlength="60"
         counter
         outlined
+        data-test="edit-email-input"
       />
       <v-text-field
         v-model="password"
@@ -39,6 +41,7 @@
         maxlength="60"
         counter
         outlined
+        data-test="edit-password-input"
       />
       <v-btn
         color="orange darken-3"
@@ -47,6 +50,7 @@
         type="submit"
         :loading="loading"
         :disabled="!fieldIsValid || loading"
+        data-test="edit-user-button"
       >
         Editar
       </v-btn>

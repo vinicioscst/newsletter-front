@@ -1,13 +1,16 @@
 <template>
   <div>
     <h1 class="mb-8 font-weight-regular text-center text-sm-left">
-      Olá, <span class="font-weight-black">{{ user?.name }}</span>
+      Olá,
+      <span class="font-weight-black" data-test="dashboard-username">{{
+        user?.name
+      }}</span>
     </h1>
 
     <div class="cards-container mb-8">
       <CreateArticlesCard />
-      <GridCard :info="totalArticlesInfo" />
-      <GridCard :info="totalTopicsInfo" />
+      <GridCard :info="totalArticlesInfo" dataTest="articles-info" />
+      <GridCard :info="totalTopicsInfo" dataTest="topics-info" />
     </div>
 
     <ArticlesTable />
@@ -70,7 +73,7 @@ export default {
 
     try {
       this.$store.commit('setPage', 1)
-      this.$store.commit('setPerPage', 4)
+      this.$store.commit('setPerPage', 12)
       await this.$store.dispatch('loadArticles')
       await this.$store.dispatch('loadTopics')
     } catch (error) {

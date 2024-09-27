@@ -30,6 +30,7 @@
         type="submit"
         :loading="loading"
         :disabled="loading"
+        data-test="create-article-button"
         >Gerar</v-btn
       >
     </v-form>
@@ -43,13 +44,13 @@ export default {
       topicsModel: { text: 'Geral', value: '' },
       topics: [
         { text: 'Geral', value: '' },
-        { text: 'Tecnologia', value: 'tech' },
-        { text: 'Esportes', value: 'sports' },
-        { text: 'Jogos', value: 'games' },
+        { text: 'Brasil', value: 'brazil' },
+        { text: 'Tecnologia e Jogos', value: 'tech-and-games' },
+        { text: 'Ciência e Saúde', value: 'science-and-health' },
         { text: 'Música', value: 'music' },
-        { text: 'Carros', value: 'cars' },
         { text: 'Economia', value: 'economy' },
-        { text: 'Cinema', value: 'cinema' },
+        { text: 'Educação', value: 'education' },
+        { text: 'Pop e Arte', value: 'pop-and-art' },
       ],
       selectedTopicValue: {
         topic: '',

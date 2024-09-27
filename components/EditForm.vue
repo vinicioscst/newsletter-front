@@ -13,6 +13,7 @@
       color="orange darken-3"
       dense
       outlined
+      data-test="article-title-edit-input"
     />
 
     <v-text-field
@@ -95,6 +96,7 @@
         type="submit"
         :loading="loading"
         :disabled="!fieldIsValid || loading"
+        data-test="article-edit-button"
       >
         Salvar
       </v-btn>
