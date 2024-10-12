@@ -1,6 +1,6 @@
 <template>
   <v-dialog v-model="isOpenValue" max-width="500px">
-    <v-card class="pa-6">
+    <v-card class="pa-6" data-test="article-edit-modal">
       <v-card-title class="pa-0 pb-3">Editar notícia</v-card-title>
       <EditForm @closeModal="handleClick" />
     </v-card>

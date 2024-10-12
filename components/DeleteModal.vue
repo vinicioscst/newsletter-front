@@ -1,6 +1,6 @@
 <template>
   <v-dialog v-model="isOpenValue" width="auto">
-    <v-card class="pa-6">
+    <v-card class="pa-6" data-test="article-delete-modal">
       <v-card-title class="pa-0 pb-1">Deletar notícia?</v-card-title>
       <v-card-text class="pa-0 pb-6"
         >Essa ação não poderá ser revertida.</v-card-text
@@ -13,6 +13,7 @@
           :loading="loading"
           :disabled="loading"
           @click="handleDelete"
+          data-test="article-delete-button"
         >
           Sim
         </v-btn>

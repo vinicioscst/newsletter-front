@@ -10,6 +10,7 @@
     :prepend-icon="icon"
     @change="handleChange"
     :value="selectValue"
+    :data-test="dataTest"
     outlined
     dense
   />
@@ -31,6 +32,10 @@ export default {
       default: () => '',
     },
     icon: {
+      type: String,
+      default: () => '',
+    },
+    dataTest: {
       type: String,
       default: () => '',
     },

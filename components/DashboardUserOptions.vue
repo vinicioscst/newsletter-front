@@ -1,7 +1,7 @@
 <template>
   <v-menu bottom left min-width="200px" rounded offset-y>
     <template v-slot:activator="{ on }">
-      <v-btn icon large v-on="on">
+      <v-btn icon large v-on="on" data-test="settings-button">
         <v-avatar color="grey lighten-3">
           <v-icon> mdi-account-circle </v-icon>
         </v-avatar>
@@ -24,6 +24,7 @@
             color="transparent"
             elevation="0"
             class="menu-options py-5 rounded-0"
+            data-test="menu-settings-button"
           >
             Configurações
           </v-btn>
@@ -33,6 +34,7 @@
             color="orange darken-4"
             elevation="0"
             class="menu-options py-5 white--text rounded-0"
+            data-test="menu-logout-button"
           >
             Logout
           </v-btn>

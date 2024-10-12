@@ -5,6 +5,7 @@
       to="/login"
       outlined
       class="white orange--text text--darken-3 login-btn-desktop"
+      data-test="header-login-button"
     >
       <v-icon dark left> mdi-login </v-icon>
       Login
@@ -14,6 +15,7 @@
       to="/login"
       outlined
       class="white orange--text text--darken-3 login-btn-mobile"
+      data-test="header-login-button-mobile"
     >
       <v-icon dark dense> mdi-login </v-icon>
     </v-btn>

@@ -16,6 +16,7 @@
         (itemsPerPage) => handlePageChange(1, itemsPerPage)
       "
       disable-sort
+      data-test="articles-table"
     >
       <template v-slot:[`item.title`]="{ item }">
         <div class="text-truncate col-width">{{ item.title }}</div>
@@ -119,7 +120,6 @@ export default {
       this.deleteDialog = true
     },
     confirmDelete() {
-      // Lógica para confirmar deleção
       this.deleteDialog = false
     },
     handlePreviewModalOpen(data) {
@@ -131,6 +131,10 @@ export default {
     handleDeleteModalOpen(data) {
       return (this.deleteDialog = data)
     },
+  },
+  beforeMount() {
+    this.$store.commit('setPage', 1)
+    this.$store.commit('setPerPage', 4)
   },
 }
 </script>
